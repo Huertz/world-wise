@@ -31,6 +31,11 @@ function App() {
           path='app'
           element={<AppLayout />}
         >
+          {/* default route*/}
+          <Route
+            index
+            element={<p>List</p>}
+          />
           <Route
             path='cities'
             element={<p>List Cities</p>}
