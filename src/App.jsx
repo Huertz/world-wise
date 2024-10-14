@@ -26,10 +26,24 @@ function App() {
           path='/login'
           element={<Login />}
         />
+        {/* Nested Routes */}
         <Route
           path='app'
           element={<AppLayout />}
-        />
+        >
+          <Route
+            path='cities'
+            element={<p>List Cities</p>}
+          />
+          <Route
+            path='countries'
+            element={<p>List Countries</p>}
+          />
+          <Route
+            path='form'
+            element={<p>Form</p>}
+          />
+        </Route>
         <Route
           path='*'
           element={<PageNotFound />}
