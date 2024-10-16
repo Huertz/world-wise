@@ -5,6 +5,7 @@ import Pricing from './pages/Pricing';
 import AppLayout from './pages/AppLayout';
 import PageNotFound from './pages/PageNotFound';
 import Login from './pages/Login';
+import CityList from './components/CityList';
 
 function App() {
   return (
@@ -34,11 +35,11 @@ function App() {
           {/* default route*/}
           <Route
             index
-            element={<p>List</p>}
+            element={<CityList />}
           />
           <Route
             path='cities'
-            element={<p>List Cities</p>}
+            element={<CityList />}
           />
           <Route
             path='countries'
