@@ -1,9 +1,12 @@
 import Spinner from './Spinner';
 import CityItem from './CityItem';
 import styles from './CityList.module.css';
+import Message from './Message';
 
 function CityList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
+
+  if (!cities.length) return <Message message='Add a citi' />;
 
   return (
     <ul className={styles.cityList}>
