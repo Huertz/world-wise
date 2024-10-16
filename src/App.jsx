@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import CityList from './components/CityList';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import CountryList from './components/CountryList';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -76,7 +77,12 @@ function App() {
           />
           <Route
             path='countries'
-            element={<p>List Countries</p>}
+            element={
+              <CountryList
+                cities={cities}
+                isLoading={isLoading}
+              />
+            }
           />
           <Route
             path='form'
