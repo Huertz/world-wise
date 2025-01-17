@@ -9,6 +9,7 @@ import CityList from './components/CityList';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import CountryList from './components/CountryList';
+import City from './components/City';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -74,6 +75,10 @@ function App() {
                 isLoading={isLoading}
               />
             }
+          />
+          <Route
+            path='cities/:id'
+            element={<City />}
           />
           <Route
             path='countries'
