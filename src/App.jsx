@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import CountryList from './components/CountryList';
 import City from './components/City';
+import Form from './components/Form';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -91,7 +92,7 @@ function App() {
           />
           <Route
             path='form'
-            element={<p>Form</p>}
+            element={<Form />}
           />
         </Route>
         <Route
