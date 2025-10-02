@@ -1,7 +1,11 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import styles from './Map.module.css';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { useState } from 'react';
+
 function Map() {
   const navigate = useNavigate();
+  const [mapPosition, setMapPostion] = useState([40, 0]);
   const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get('lat');
   const lng = searchParams.get('lng');
@@ -10,18 +14,18 @@ function Map() {
       className={styles.mapContainer}
       onClick={() => navigate('form')}
     >
-      <h1>Map</h1>
-      <h1>
-        Position: {lat} & {lng}
-      </h1>
-
-      <button
-        onClick={() => {
-          setSearchParams({ lat: 23, lng: 50 });
-        }}
+      <MapContainer
+        center={mapPosition}
+        zoom={13}
+        scrollWheelZoom={true}
+        className={styles.map}
       >
-        Change pos
-      </button>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        />
+        <Marker position={mapPosition}></Marker>
+      </MapContainer>
     </div>
   );
 }
