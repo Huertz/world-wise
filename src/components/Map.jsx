@@ -1,10 +1,12 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import styles from './Map.module.css';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useState } from 'react';
+import { useCities } from '../context/CitiesContext';
 
 function Map() {
   const navigate = useNavigate();
+  const { cities } = useCities();
   const [mapPosition, setMapPostion] = useState([40, 0]);
   const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get('lat');
@@ -24,7 +26,17 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        <Marker position={mapPosition}></Marker>
+        {cities.map((city) => (
+          <Marker
+            position={[city.position.lat, city.position.lng]}
+            key={city.id}
+          >
+            <Popup>
+              <span>{city.emoji}</span>
+              <span>{city.cityName}</span>
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );
